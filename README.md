@@ -7,7 +7,8 @@
 
 ## 🌐 Live Demos
 -**Vercel:** [https://smart-water-bottle-6lt2crusx-ilaydayagmuryagx1s-projects.vercel.app]
-- **Netlify:** [https://smart-water-bottle.netlify.app](https://smart-water-bottle.netlify.app)
+
+**Netlify:** [https://smart-water-bottle-app.netlify.app]
 
 ##  Preview
 ![Desktop View](./screenshots/desktop-dark.jpeg)
