@@ -1,0 +1,41 @@
+/* ===== INPUT COMPONENT ===== */
+.form-group {
+    margin-bottom: 1.5rem;
+
+    &__label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: var(--text);
+    }
+
+    &__input,
+    &__textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid var(--border);
+        border-radius: 8px;
+        font-size: 1rem;
+        background: var(--white);
+        color: var(--text);
+        transition: var(--transition);
+
+        &:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 168, 255, 0.1);
+        }
+    }
+
+    &__input--error,
+    &__textarea--error {
+        border-color: var(--error);
+    }
+
+    &__error {
+        color: var(--error);
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+        min-height: 20px;
+    }
+}

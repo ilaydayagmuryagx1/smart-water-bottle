@@ -1,0 +1,64 @@
+/* ===== ACCORDION COMPONENT ===== */
+.accordion {
+    margin-top: 2rem;
+
+    &__item {
+        margin-bottom: 1rem;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        background: var(--white);
+    }
+
+    &__header {
+        width: 100%;
+        padding: 1.5rem;
+        background-color: var(--surface);
+        border: none;
+        text-align: left;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: var(--transition);
+
+        &:hover {
+            background-color: var(--light-gray);
+        }
+
+        &:focus {
+            outline: 3px solid var(--primary-color);
+            outline-offset: -3px;
+        }
+
+        &::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        &.active {
+            &::after {
+                content: '-';
+            }
+        }
+    }
+
+    &__content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        background-color: var(--white);
+
+        p {
+            padding: 1.5rem;
+            margin: 0;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+    }
+}
