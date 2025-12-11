@@ -1,13 +1,13 @@
-// src/components/Button.ts
-export type ButtonVariant = 'primary' | 'outline';
+export type ButtonVariant = 'primary' | 'outline' | 'ghost';
 export type ButtonSize = 'small' | 'medium' | 'large';
 
 export interface ButtonOptions {
     text: string;
-    variant?: ButtonVariant;
-    size?: ButtonSize;
+    variant: ButtonVariant;
+    onClick: () => void;
+    disabled?: boolean;
     icon?: string;
-    onClick?: () => void;
+    size?: ButtonSize;
     className?: string;
 }
 
@@ -34,6 +34,11 @@ export function createButton(options: ButtonOptions): HTMLButtonElement {
     
     button.className = classes.join(' ');
     button.textContent = options.text;
+    
+    // Disabled state
+    if (options.disabled) {
+        button.disabled = true;
+    }
     
     // Icon
     if (options.icon) {
