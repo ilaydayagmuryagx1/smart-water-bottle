@@ -1,9 +1,8 @@
-
+// DOĞRU IMPORT (interface'leri component'lerden al):
 import { createButton, ButtonOptions } from './components/Button';
 import { createCard, CardOptions } from './components/Card';
 import { Modal } from './components/Modal';
 import { Accordion, AccordionItem } from './components/Accordion';
-
 
 declare global {
     interface Window {
@@ -40,32 +39,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===== 2. MODAL COMPONENT =====
     const modalElement = document.getElementById('success-modal');
     if (modalElement) {
-        const modal = new Modal(modalElement as HTMLElement);
+        const modal = new Modal('success-modal');
         
         // Global functions
         window.showModal = (title: string, message: string) => {
-            const modalTitle = modalElement.querySelector('.modal__title') as HTMLElement;
-            const modalMessage = modalElement.querySelector('.modal__message') as HTMLElement;
-            
-            if (modalTitle) modalTitle.textContent = title;
-            if (modalMessage) modalMessage.textContent = message;
-            
-            modal.show();
+            modal.show({ title, message });
         };
         
-        window.closeModal = () => modal.hide();
-        
-        // Modal içindeki close butonları
-        const modalCloseBtn = modalElement.querySelector('.modal__close');
-        const modalOkBtn = modalElement.querySelector('.btn--modal');
-        
-        if (modalCloseBtn) {
-            modalCloseBtn.addEventListener('click', () => modal.hide());
-        }
-        
-        if (modalOkBtn) {
-            modalOkBtn.addEventListener('click', () => modal.hide());
-        }
+        window.closeModal = () => modal.close();
     }
     
     // ===== 3. ACCORDION COMPONENT =====
@@ -160,46 +141,40 @@ document.addEventListener('DOMContentLoaded', function() {
                 contactForm.reset();
             }
         });
-        
-        // Real-time validation
-        const nameInput = document.getElementById('name') as HTMLInputElement;
-        const emailInput = document.getElementById('email') as HTMLInputElement;
-        
-        if (nameInput) {
-            nameInput.addEventListener('blur', () => validateForm());
-        }
-        
-        if (emailInput) {
-            emailInput.addEventListener('blur', () => validateForm());
-        }
     }
     
-    // ===== 5. BUTTON ACTIONS =====
-    // Buy Now Button
-    const buyNowBtn = document.getElementById('buy-now-btn');
-    if (buyNowBtn) {
-        buyNowBtn.addEventListener('click', () => {
-            window.showModal('Order Placed', 'Thank you for your purchase! You will be redirected to checkout.');
+    // ===== 5. DYNAMIC COMPONENTS =====
+    // Create dynamic buttons for pricing cards
+    const pricingButtons = document.querySelectorAll('.card--pricing button');
+    if (pricingButtons.length > 0) {
+        pricingButtons.forEach((button, index) => {
+            const originalButton = button as HTMLButtonElement;
+            const plan = originalButton.closest('.card--pricing')?.querySelector('h3')?.textContent || 'Plan';
+            
+            const buttonOptions: ButtonOptions = {
+                text: originalButton.textContent || 'Select Plan',
+                variant: originalButton.classList.contains('btn--primary') ? 'primary' : 'outline',
+                onClick: () => {
+                    window.showModal('Plan Selected', `You selected the ${plan} plan!`);
+                }
+            };
+            
+            const newButton = createButton(buttonOptions);
+            originalButton.replaceWith(newButton);
         });
     }
     
-    // Learn More Button
-    const learnMoreBtn = document.getElementById('learn-more-btn');
-    if (learnMoreBtn) {
-        learnMoreBtn.addEventListener('click', () => {
-            window.showModal('Mobile App Demo', 'The mobile app demo will open in a new window.');
+    // Create dynamic feature cards
+    const featureCards = document.querySelectorAll('.card--feature-detail');
+    if (featureCards.length > 0) {
+        featureCards.forEach(cardElement => {
+            const featureName = cardElement.querySelector('h3')?.textContent || 'Feature';
+            
+            cardElement.addEventListener('click', () => {
+                window.showModal(featureName, `Details about ${featureName}`);
+            });
         });
     }
-    
-    // Pricing Plan Buttons
-    const pricingButtons = document.querySelectorAll('.card--pricing .btn');
-    pricingButtons.forEach((button, index) => {
-        button.addEventListener('click', () => {
-            const planNames = ['Basic', 'Pro', 'Premium'];
-            const planName = planNames[index] || 'Plan';
-            window.showModal('Plan Selected', `You have selected the ${planName} plan! We will contact you shortly.`);
-        });
-    });
     
     // ===== 6. INTERACTIVE FEATURES =====
     // Interactive Bottle
@@ -211,13 +186,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const percentage = animatedBottle.querySelector('.percentage') as HTMLElement;
             
             if (waterFill && percentage) {
-                // Animate water level
                 let currentLevel = parseInt(waterFill.style.height || '75');
                 currentLevel = currentLevel >= 100 ? 25 : currentLevel + 25;
                 waterFill.style.height = `${currentLevel}%`;
                 percentage.textContent = `${currentLevel}%`;
                 
-                // Change temperature
                 const tempElement = animatedBottle.querySelector('.temp');
                 if (tempElement) {
                     let currentTemp = parseInt(tempElement.textContent || '22');
@@ -225,20 +198,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     tempElement.textContent = `${currentTemp}°C`;
                 }
             }
-        });
-    }
-    
-    // Feature Bubble
-    const featureBubble = document.getElementById('feature-bubble');
-    if (featureBubble) {
-        featureBubble.addEventListener('mouseenter', () => {
-            featureBubble.style.transform = 'translateY(-5px)';
-            featureBubble.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.15)';
-        });
-        
-        featureBubble.addEventListener('mouseleave', () => {
-            featureBubble.style.transform = 'translateY(0)';
-            featureBubble.style.boxShadow = '';
         });
     }
     

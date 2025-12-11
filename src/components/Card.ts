@@ -3,16 +3,10 @@ export type CardVariant = 'feature' | 'pricing' | 'feature-detail' | 'default';
 export type CardSize = 'small' | 'medium' | 'large';
 
 export interface CardOptions {
-    title?: string;
+    title: string;
     content: string;
-    variant?: CardVariant;
-    size?: CardSize;
-    icon?: string;
-    className?: string;
-    onClick?: (event: MouseEvent) => void;
-    badge?: string;
-    features?: string[];
-    price?: string;
+    image?: string;
+    variant?: 'default' | 'feature' | 'pricing';
 }
 
 export function createCard(options: CardOptions): HTMLDivElement {
