@@ -1,79 +1,121 @@
-#  Smart Water Bottle Landing Page
+ ## Smart Water Bottle - Interactive Landing Page
 
-##  Canlı Demo
-[![Live Demo](https://img.shields.io/badge/DEMO-LIVE_SUCCESS-00a8ff?style=for-the-badge)](https://your-vercel-link.vercel.app)
+![Lighthouse Report for Smart Water Bottle](./screenshots/lighthouse-smartbottle.png)
+![Responsive](./screenshots/Desktop-görüntü.jpeg)
+![Responsive](./screenshots/mobil-görüntü.jpeg)      
 
-##  Özellikler
-- ✅ Hero bölümü - animasyonlu şişe görseli
-- ✅ 10 akıllı özellik gösterimi
-- ✅ Fiyatlandırma kartları
-- ✅ FAQ accordion (klavye destekli)
-- ✅ İletişim formu (validasyonlu)
-- ✅ Açık/Koyu tema değiştirme
-- ✅ Tam responsive tasarım
-- ✅ Erişilebilirlik (WCAG 2.1 uyumlu)
 
-##  Mimari
-- **HTML5**: Semantik markup
-- **CSS3**: CSS Değişkenleri, Flexbox/Grid
-- **JavaScript**: Vanilla ES6+
-- **Harici kütüphane yok**
-- **Mobile-first tasarım**
+## 🌐 Live Demos
+-**Vercel:** [https://smart-water-bottle-6lt2crusx-ilaydayagmuryagx1s-projects.vercel.app]
+- **Netlify:** [https://smart-water-bottle.netlify.app](https://smart-water-bottle.netlify.app)
 
-##  Responsive Breakpoints
-- **Mobil**: ≤ 640px
-- **Tablet**: 641px - 1024px
-- **Desktop**: ≥ 1025px
+##  Preview
+![Desktop View](./screenshots/desktop-dark.jpeg)
+*Desktop View - dark Theme*
 
-## ♿ Erişilebilirlik
-- Skip to content link
-- ARIA etiketleri
-- Klavye navigasyonu
-- Yüksek kontrast
-- Ekran okuyucu uyumlu
+![Mobile View](./screenshots/mobil-light.jpeg)
+*Mobile View - light Theme*
 
-##  Temalar
-- Açık/Koyu tema
-- CSS Custom Properties
-- localStorage ile tema kalıcılığı
+##  Project Overview
+A fully responsive, accessible, and interactive landing page for a smart water bottle product. Built with a custom component library using TypeScript and SCSS.
 
-##  Lighthouse Skoru
-![Lighthouse Report](lighthouse-report.png)
+###  UI
+- **Interactive Product Showcase**: Hover to reveal real product image
+- **Live Water Level Animation**: Real-time hydration tracking visualization
+- **Theme Toggle**: Light/Dark mode with CSS custom properties
+- **Responsive Design**: Fluid layouts for 320px to 1440px viewports
+- **Smooth Animations**: CSS transitions and keyframe animations
 
-| Kategori | Skor |
-|----------|------|
-| Performance | 95+ |
-| Accessibility | 100 |
-| Best Practices | 100 |
-| SEO | 100 |
+## Technical Features
+- **Custom Component Library**: Button, Card, Input, Modal, Accordion
+- **TypeScript Validation**: Form validation with real-time feedback
+- **SCSS Architecture**: Modular SCSS with BEM methodology
+- **Accessibility First**: WCAG AA compliant, keyboard navigable
+- **Performance Optimized**: 95+ Lighthouse scores
 
-##  Kurulum
-1. Projeyi indir veya klonla
-2. `index.html` dosyasını tarayıcıda aç
-3. Veya VS Code'da Live Server eklentisi ile çalıştır
+## Component Library
+| Component | Features | Status |
+|-----------|----------|--------|
+| **Button** | Primary/Secondary/Outline variants, Icons, Badges | ✅ |
+| **Card** | Feature cards, Pricing cards, Interactive states | ✅ |
+| **Input** | Validation, Error states, Accessible labels | ✅ |
+| **Modal** | Success/Failure modals, Keyboard close | ✅ |
+| **Accordion** | Animated FAQ section, ARIA attributes | ✅ |
 
-##  Dosya Yapısı
-smart-water-bottle/
-├── index.html
-├── style.css
-├── script.js
+ 
+## Architecture Decisions
+*Vite over Webpack: Faster dev server and simpler configuration
+*Vanilla TypeScript over React: Lightweight approach for simple components
+*SCSS Modules: Scoped styles without CSS-in-JS overhead
+*Custom Component Library: No external UI dependencies for maximum control
+
+ Project Structure
+SMART-WATER-BOTTLE/
+│
+├── .vscode/
+│
+├── dist/                # Derlenmiş çıktı dosyaları (vite ile oluşur)
+│
+├── node_modules/        # Bağımlılıklar
+│
+├── src/
+│   ├── components/
+│   │   ├── Accordion.ts
+│   │   ├── Button.ts
+│   │   ├── Card.ts
+│   │   ├── Input.ts
+│   │   └── Modal.ts
+│   │
+│   ├── main.ts          # Ana JavaScript/TypeScript dosyası
+│   │
+│   ├── styles/
+│       ├── components/
+│       │   ├── _accordion.scss
+│       │   ├── _button.scss
+│       │   ├── _card.scss
+│       │   ├── _input.scss
+│       │   └── _modal.scss
+│       │
+│       ├── css/
+│       │   ├── _base.scss
+│       │   └── _layout.scss
+│       │
+│       └── main.scss     # Ana SCSS dosyası (hepsini import eder)
+│
+├── .gitignore
+│
+├── index.html            # Ana HTML sayfası
+│
+├── package-lock.json
+├── package.json
+│
 ├── README.md
-├── smartbottlegorsel.png
-└── lighthouse-report.png
+│
+├── smartbottlegorsel.png # Ürün görseli
+│
+├── test.css
+├── test.css.map
+│
+├── tsconfig.json         # TS ayarları
+│
+└── vite.config.js   
+
+## Responsive Breakpoints
+Breakpoint	Device	Layout
+320px - 640px	Mobile	Single column, touch-friendly
+641px - 1024px	Tablet	Two columns, adaptive grids
+1025px - 1440px	Desktop	Three columns, full features
+1441px+	Large Desktop	Max-width container, enhanced spacing
 
 
-##  Karşılanan Gereksinimler
-- [x] Tek sayfalık landing page
-- [x] 5 UI bileşeni (Button, Card, Modal, Accordion, Input)
-- [x] Mobile-first responsive (3 breakpoint)
-- [x] Açık/Koyu tema (CSS Variables)
-- [x] Form validation (vanilla JS)
-- [x] Harici UI kütüphanesi yok
-- [x] Erişilebilirlik özellikleri
-- [x] Performans optimizasyonu
+## Accessibility Features
+✅ Semantic HTML with proper heading hierarchy
+✅ ARIA attributes (roles, labels, live regions)
+✅ Full keyboard navigation support
+✅ Skip to main content link
+✅ WCAG AA color contrast (4.5:1 minimum)
+✅ Visible focus indicators for all interactive elements
+✅ Screen reader optimized content
+✅ Form input validation with accessible error messages
 
-## 👨‍💻 Geliştirici
-İlayda Yağmur Yağcı
-
-## 📄 Lisans
-MIT License
+## İlayda Yağmur Yağcı
