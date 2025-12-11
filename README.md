@@ -1,7 +1,7 @@
 #  Smart Water Bottle Landing Page
 
 ##  Canlı Demo
-[Buraya Netlify/Vercel linkini ekle]
+[![Live Demo](https://img.shields.io/badge/DEMO-LIVE_SUCCESS-00a8ff?style=for-the-badge)](https://your-vercel-link.vercel.app)
 
 ##  Özellikler
 - ✅ Hero bölümü - animasyonlu şişe görseli
